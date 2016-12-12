@@ -4,7 +4,7 @@ Feature
 ``GetTenantFeatureState()``
 ----------------------
 
-Returns the current state of the tenant.
+Returns the current state of a feature for the tenant.
 
 **Syntax**
 
@@ -38,7 +38,7 @@ Group
 ``GetGroup()``
 ----------------------
 
-Returns the current group.
+Returns the group associated with a tenant.
 
 **Syntax**
 
@@ -68,7 +68,7 @@ Returns the current group.
 ``GetGroups()``
 ----------------------
 
-Returns a list of groups.
+Returns a list of groups for a Tenant.
 
 **Syntax**
 
@@ -140,14 +140,13 @@ Creates a group.
 ``String tenantId``
   The tenant identifier for the request
 ``Group group``
-  The group identifier for the request
+  The group to be created
 
 **Body**
 
 ::
 
   {
-    "Id": "id",
     "Name": "name",
     "AzureActiveDirectoryGroupName": "azureactivedirectorygroupname",
     "Description": "description" 
@@ -211,7 +210,7 @@ Adds a specified user to a group.
 ``String groupId``
   The group identifier for the request
 ``CreateUser user``
-  The user identifier for the request
+  The user to be added to the group
   
   
 **Body**
@@ -343,13 +342,13 @@ Creates a namespace.
 
 ::
 
-  POST PICS/Tenants/{tenantId}/Namespaces/
+  POST PICS/Tenants/{tenantId}/Namespaces
 
 
 **Parameters**
 
 ``Namespace namespaceObj``
-  The namespace identifier for the request
+  The namespace to be created
   
 **Body**
 
@@ -360,10 +359,7 @@ Creates a namespace.
     "Id": "id",
     "TenantId": "tenantid",
     "Description": "description",
-    "TierId": "tierid",
-    "ThroughputUnits": 0,
-    "StorageUnits": 0,
-    "CalculationUnits": 0
+    "TierId": "tierid"
   }
 
 **Security**
@@ -404,7 +400,7 @@ Deletes a namespace.
 ``DeleteNamespaces()``
 ----------------------
 
-Deletes one or more namespaces.
+Deletes one or more namespaces associated with a tenant.
 
 
 **Syntax**
@@ -415,7 +411,7 @@ Deletes one or more namespaces.
 
 ::
 
-  DELETE PICS/Tenants/{tenantId}/Namespaces/
+  DELETE PICS/Tenants/{tenantId}/Namespaces
 
 **Parameters**
 
@@ -431,7 +427,7 @@ Deletes one or more namespaces.
 ``UpdateNamespace()``
 ----------------------
 
-Updates namespace information.
+Updates namespace information - description and the namespace tier.
 
 **Syntax**
 
@@ -450,7 +446,7 @@ Updates namespace information.
 ``String tenantId``
   The tenant identifier for the request
 ``Namespace namespaceObj``
-  The namespace identifier for the request
+  The namespace to be updated
   
   
 **Body**
@@ -461,10 +457,7 @@ Updates namespace information.
     "Id": "id",
     "TenantId": "tenantid",
     "Description": "description",
-    "TierId": "tierid",
-    "ThroughputUnits": 0,
-    "StorageUnits": 0,
-    "CalculationUnits": 0
+    "TierId": "tierid"
   }
 
 
@@ -498,7 +491,7 @@ Returns a list of matching pages.
 ``Int32 skip``
   The number of matches to skip over before returning the matching page.
 ``Int32 take``
-  The take (?)
+  The number of blogs to take after skip
 
 **Security**
   Any OSIsoft Cloud Services user
@@ -725,7 +718,7 @@ Returns a user name based on tenant Id and user Id.
 ``Get()``
 ----------------------
 
-Returns a user Id.
+Returns a list of users for a tenant.
 
 **Syntax**
 
@@ -752,7 +745,7 @@ Returns a user Id.
 ``GetUserGroups()``
 ----------------------
 
-Returns a list of user groups.
+Returns a list of groups in a tenant that a user is a member of.
 
 **Syntax**
 
@@ -876,7 +869,7 @@ Updates a specified user within a group.
 ``String userId``
   The user identifier for the request
 ``CreateUser user``
-  The user identifier for the request
+  The user to be updated
   
   
 **Body**
