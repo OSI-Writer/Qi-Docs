@@ -360,10 +360,7 @@ Creates a namespace.
     "Id": "id",
     "TenantId": "tenantid",
     "Description": "description",
-    "TierId": "tierid",
-    "ThroughputUnits": 0,
-    "StorageUnits": 0,
-    "CalculationUnits": 0
+    "TierId": "tierid"
   }
 
 **Security**
@@ -400,38 +397,10 @@ Deletes a namespace.
 
 **********************
 
-
-``DeleteNamespaces()``
-----------------------
-
-Deletes one or more namespaces.
-
-
-**Syntax**
-
-.. highlight:: none
-
-**Http**
-
-::
-
-  DELETE PICS/Tenants/{tenantId}/Namespaces/
-
-**Parameters**
-
-``String tenantId``
-
-
-**Security**
-  OSIsoft Cloud Services tenant administrator
-
-**********************
-
-
 ``UpdateNamespace()``
 ----------------------
 
-Updates namespace information.
+Updates namespace information - description and tier Id.
 
 **Syntax**
 
@@ -461,10 +430,7 @@ Updates namespace information.
     "Id": "id",
     "TenantId": "tenantid",
     "Description": "description",
-    "TierId": "tierid",
-    "ThroughputUnits": 0,
-    "StorageUnits": 0,
-    "CalculationUnits": 0
+    "TierId": "tierid"
   }
 
 
