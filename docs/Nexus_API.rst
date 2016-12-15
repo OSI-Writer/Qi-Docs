@@ -630,6 +630,55 @@ Deletes a specified client key.
 NamespaceTier
 ==========
 
+``GetNamespaceTier()``
+----------------------
+
+Returns a Namespace tier associated with a specified id
+
+**Syntax**
+
+.. highlight:: none
+
+**Http**
+
+::
+
+  GET PICS/NamespaceTiers/{id}
+
+**Parameters**
+
+``String id``
+  The tier identifier for the request
+
+**Security**
+   Any OSIsoft Cloud Services user
+
+
+**********************
+
+``GetAllNamespaceTiers()``
+----------------------
+
+Returns a list of all available namespace tiers.
+
+**Syntax**
+
+.. highlight:: none
+
+**Http**
+
+::
+
+  GET PICS/NamespaceTiers
+
+**Parameters**
+
+**Security**
+   Any OSIsoft Cloud Services user
+
+
+**********************
+
 Utilities
 ==========
 
