@@ -4,7 +4,7 @@ Feature
 ``GetTenantFeatureState()``
 ----------------------
 
-Returns the current state of the tenant.
+Returns the current state of a feature of the tenant.
 
 **Syntax**
 
@@ -38,7 +38,7 @@ Group
 ``GetGroup()``
 ----------------------
 
-Returns the current group.
+Returns the specified group associated with a tenant.
 
 **Syntax**
 
@@ -68,7 +68,7 @@ Returns the current group.
 ``GetGroups()``
 ----------------------
 
-Returns a list of groups.
+Returns a list of groups for a tenant.
 
 **Syntax**
 
@@ -140,7 +140,7 @@ Creates a group.
 ``String tenantId``
   The tenant identifier for the request
 ``Group group``
-  The group identifier for the request
+  The group to be created
 
 **Body**
 
@@ -163,7 +163,7 @@ Creates a group.
 ``Delete()``
 ----------------------
 
-Delete a specified group.
+Deletes a specified group.
 
 **Syntax**
 
@@ -211,7 +211,7 @@ Adds a specified user to a group.
 ``String groupId``
   The group identifier for the request
 ``CreateUser user``
-  The user identifier for the request
+  The user to be added to the group
   
   
 **Body**
@@ -349,7 +349,7 @@ Creates a namespace.
 **Parameters**
 
 ``Namespace namespaceObj``
-  The namespace identifier for the request
+  The namespace to be created
   
 **Body**
 
@@ -464,7 +464,7 @@ Returns a list of matching pages.
 ``Int32 skip``
   The number of matches to skip over before returning the matching page.
 ``Int32 take``
-  The take (?)
+  The number of blogs to take after skip
 
 **Security**
   Any OSIsoft Cloud Services user
@@ -712,7 +712,7 @@ User
 ``Get()``
 ----------------------
 
-Returns a user name based on tenant Id and user Id.
+Returns a user based on tenant Id and user Id.
 
 **Syntax**
 
@@ -740,7 +740,7 @@ Returns a user name based on tenant Id and user Id.
 ``Get()``
 ----------------------
 
-Returns a user Id.
+Returns a list of all users for a tenant.
 
 **Syntax**
 
@@ -767,7 +767,7 @@ Returns a user Id.
 ``GetUserGroups()``
 ----------------------
 
-Returns a list of user groups.
+Returns a list of user groups a user in a tenant belongs to.
 
 **Syntax**
 
@@ -844,7 +844,7 @@ Creates a user within a specified group.
 ``String tenantId``
   The tenant identifier for the request
 ``CreateUser user``
-  The user identifier for the request
+  The user to be created
   
 **Body**
 
@@ -876,7 +876,7 @@ Creates a user within a specified group.
 ``Update()``
 ----------------------
 
-Updates a specified user within a group.
+Updates a specified user within a tenant.
 
 **Http**
 
@@ -891,7 +891,7 @@ Updates a specified user within a group.
 ``String userId``
   The user identifier for the request
 ``CreateUser user``
-  The user identifier for the request
+  The user to be updated
   
   
 **Body**
@@ -921,7 +921,7 @@ Updates a specified user within a group.
 
 ``Delete()``
 ----------------------
-Deletes a user from a group.
+Deletes a user from a tenant.
 
 
 **Syntax**
