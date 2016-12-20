@@ -419,7 +419,7 @@ Updates namespace information - description and tier Id.
 ``String tenantId``
   The tenant identifier for the request
 ``Namespace namespaceObj``
-  The namespace identifier for the request
+  The namespace to be updated
   
   
 **Body**
