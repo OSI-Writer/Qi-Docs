@@ -1,19 +1,19 @@
-QiType API calls
+SdsType API calls
 ==================
 
-The API calls in this section are all used to create and manipulate QiTypes. 
-QiType management via the Qi Client Libraries is performed through the 
-``IQiMetadataService`` interface, which is accessed using the 
-``QiService.GetMetadataService( )`` helper.  
-See `QiTypes <https://qi-docs.readthedocs.org/en/latest/Qi_Types.html>`__ 
-for general QiType information, working with compound indexes, and supported QiTypes.
+The API calls in this section are all used to create and manipulate SdsTypes. 
+SdsType management via the Sequential Data Store (Sds) Client Libraries is performed through the 
+``ISdsMetadataService`` interface, which is accessed using the 
+``SdsService.GetMetadataService( )`` helper.  
+See `SdsTypes <https://qi-docs.readthedocs.org/en/latest/Qi_Types.html>`__ 
+for general SdsType information, working with compound indexes, and supported SdsTypes.
 
 
 ***********************
 
 
 ``GetStreamTypeAsync()``
-----------------
+----------------------
 
 Returns the type definition that is associated with a given stream from the specified namespace.
 
@@ -21,12 +21,12 @@ Returns the type definition that is associated with a given stream from the spec
 
 ::
 
-    Task<QiType> GetStreamTypeAsync(string streamId);
+    Task<SdsType> GetStreamTypeAsync(string streamId);
 
 *Http*
 ::
 
-    GET Qi/{tenantId}/{namespaceId}/Streams/{streamId}/Type
+    GET Sds/{tenantId}/{namespaceId}/Streams/{streamId}/Type
 
 
 **Parameters**
@@ -41,7 +41,7 @@ Returns the type definition that is associated with a given stream from the spec
 
 **Returns**
 
-  Qitype type definition
+  SdsType type definition
 
 
 Security
@@ -60,13 +60,13 @@ Returns the type of the specified ``typeId`` from the specified namespace.
 
 ::
 
-    Task<QiType> GetTypeAsync(string typeId);
+    Task<SdsType> GetTypeAsync(string typeId);
 
 *Http*
 
 ::
 
-    GET Qi/{tenantId}/{namespaceId}/Types/{typeId}
+    GET Sds/{tenantId}/{namespaceId}/Types/{typeId}
 
 **Parameters**
 
@@ -79,7 +79,7 @@ Returns the type of the specified ``typeId`` from the specified namespace.
 
 
 **Returns**
-  A QiType specified by the typeId
+  An SdsType specified by the typeId
 
 Security
   Allowed by administrator and user accounts
@@ -97,14 +97,14 @@ Returns a list of all types within a given namespace.
 
 ::
 
-    Task<IEnumerable<QiType>> GetTypesAsync( );
+    Task<IEnumerable<SdsType>> GetTypesAsync( );
 
 
 *Http*
 
 ::
 
-    GET Qi/Types
+    GET Sds/Types
 
 
 **Parameters**
@@ -116,7 +116,7 @@ Returns a list of all types within a given namespace.
 
 **Returns**
 
-  IEnumerable QiType of all types in the namespace
+  IEnumerable SdsType of all types in the namespace
 
 
 Security
@@ -129,20 +129,21 @@ Security
 ``GetOrCreateTypeAsync()``
 ----------------
 
-Returns the type of the specified ``typeId`` within a namespace, or creates the type if the ``typeId`` does not already exist. If the ``typeId`` exists, it is returned to the caller unchanged. 
+Returns the type of the specified ``typeId`` within a namespace, or creates the type if the ``typeId`` does not 
+already exist. If the ``typeId`` exists, it is returned to the caller unchanged. 
 
 
 **Syntax**
 
 ::
 
-    Task<QiType> GetOrCreateTypeAsync(QiType qitype);
+    Task<SdsType> GetOrCreateTypeAsync(SdsType sdstype);
 
 *Http*
 
 ::
 
-    POST Qi/{tenantId}/{namespaceId}/Types
+    POST Sds/{tenantId}/{namespaceId}/Types
 
 
 
@@ -152,13 +153,13 @@ Returns the type of the specified ``typeId`` within a namespace, or creates the 
   The tenant identifier for the request
 ``string namespaceId``
   The namespace identifier for the request
-``QiType qitype``
+``SdsType sdstype``
   The type of the stream for which the type request is made
 
 
 **Returns**
 
-  Qitype
+  SdsType
 
 
 Security
@@ -169,9 +170,9 @@ Security
 .. _Introducing JSON: http://json.org/index.html
 
  For HTTP requests, the message content (the event) must be serialized in JSON format. JSON objects consist of a 
- series of name-value property pairs enclosed within brackets. Because QiType objects can become complex (particularly 
- when properties themselves are QiTypes), OSIsoft recommends using a JSON serializer (available at `Introducing JSON`_). 
- The following example shows the serialization of the QiType object from the WaveData example. See the Qi code 
+ series of name-value property pairs enclosed within brackets. Because SdsType objects can become complex (particularly 
+ when properties themselves are SdsTypes), OSIsoft recommends using a JSON serializer (available at `Introducing JSON`_). 
+ The following example shows the serialization of the SdsType object from the WaveData example. See the Sds code 
  samples for the complete WaveData example.
 
 
@@ -181,18 +182,18 @@ Security
 		"Id":"WaveData_SampleType",
 		"Name":"Wave Data Type",
 		"Description":"This is a type for WaveData events",
-		"QiTypeCode":0,
+		"SdsTypeCode":0,
 		"Properties":[
 			{
 				"Id":"Order",
 				"Name":null,
 				"Description":null,
-				"QiType":
+				"SdsType":
 					{
 						"Id":"intType",
 						"Name":null,
 						"Description":null,
-						"QiTypeCode":9,
+						"SdsTypeCode":9,
 						"Properties":null
 					},
 				"IsKey":true
@@ -201,12 +202,12 @@ Security
 				"Id":"Tau",
 				"Name":null,
 				"Description":null,
-				"QiType":
+				"SdsType":
 					{
 						"Id":"doubleType",
 						"Name":null,
 						"Description":null,
-						"QiTypeCode":14,
+						"SdsTypeCode":14,
 						"Properties":null
 					},
 				"IsKey":false
@@ -215,12 +216,12 @@ Security
 				"Id":"Radians",
 				"Name":null,
 				"Description":null,
-				"QiType":
+				"SdsType":
 					{
 						"Id":"doubleType",
 						"Name":null,
 						"Description":null,
-						"QiTypeCode":14,
+						"SdsTypeCode":14,
 						"Properties":null
 					},
 				"IsKey":false
@@ -229,12 +230,12 @@ Security
 				"Id":"Sin",
 				"Name":null,
 				"Description":null,
-				"QiType":
+				"SdsType":
 					{
 						"Id":"doubleType",
 						"Name":null,
 						"Description":null,
-						"QiTypeCode":14,
+						"SdsTypeCode":14,
 						"Properties":null
 					},
 					"IsKey":false
@@ -243,12 +244,12 @@ Security
 				"Id":"Cos",
 				"Name":null,
 				"Description":null,
-				"QiType":
+				"SdsType":
 					{
 						"Id":"doubleType",
 						"Name":null,
 						"Description":null,
-						"QiTypeCode":14,
+						"SdsTypeCode":14,
 						"Properties":null
 					},
 				"IsKey":false
@@ -257,12 +258,12 @@ Security
 				"Id":"Tan",
 				"Name":null,
 				"Description":null,
-				"QiType":
+				"SdsType":
 					{
 						"Id":"doubleType",
 						"Name":null,
 						"Description":null,
-						"QiTypeCode":14,
+						"SdsTypeCode":14,
 						"Properties":null
 					},
 				"IsKey":false
@@ -271,12 +272,12 @@ Security
 				"Id":"Sinh",
 				"Name":null,
 				"Description":null,
-				"QiType":
+				"SdsType":
 					{
 						"Id":"doubleType",
 						"Name":null,
 						"Description":null,
-						"QiTypeCode":14,
+						"SdsTypeCode":14,
 						"Properties":null
 					},
 				"IsKey":false
@@ -285,12 +286,12 @@ Security
 				"Id":"cosh",
 				"Name":null,
 				"Description":null,
-				"QiType":
+				"SdsType":
 					{	
 						"Id":"doubleType",
 						"Name":null,
 						"Description":null,
-						"QiTypeCode":14,
+						"SdsTypeCode":14,
 						"Properties":null
 					},
 				"IsKey":false
@@ -299,12 +300,12 @@ Security
 				"Id":"Tanh",
 				"Name":null,
 				"Description":null,
-				"QiType":
+				"SdsType":
 					{
 						"Id":"doubleType",
 						"Name":null,
 						"Description":null,
-						"QiTypeCode":14,
+						"SdsTypeCode":14,
 						"Properties":null
 					},
 				"IsKey":false
@@ -331,7 +332,7 @@ streams are associated with it.
 
 ::
 
-    DELETE Qi/{tenantId}/{namespaceId}/Types/{typeId}
+    DELETE Sds/{tenantId}/{namespaceId}/Types/{typeId}
 
 
 
@@ -346,7 +347,7 @@ streams are associated with it.
 
 **Returns**
 
-  Qitype
+  Sdstype
 
 
 Security
@@ -366,16 +367,16 @@ associated with it. Also, certain parameters cannot be changed after they are de
 
 ::
 
-    Task UpdateTypeAsync(string typeId, QiType qitype);
+    Task UpdateTypeAsync(string typeId, SdsType Sdstype);
 
 *Http*
 
 ::
 
-    PUT Qi/{tenantId}/{namespaceId}/Types/{typeId}
+    PUT Sds/{tenantId}/{namespaceId}/Types/{typeId}
 
 
-Content is a serialized QiType object.
+Content is a serialized SdsType object.
 
 **Parameters**
 
@@ -383,13 +384,13 @@ Content is a serialized QiType object.
   The tenant identifier for the request
 ``string namespaceId``
   The namespace identifier for the request
-``string qitype``
-  The qitype of the type to update
+``string Sdstype``
+  The Sdstype of the type to update
 
 
 **Returns**
 
-  Qitype
+  Sdstype
 
 Security
   Allowed by Administrator account
