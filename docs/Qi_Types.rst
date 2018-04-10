@@ -1,28 +1,30 @@
-======================
-QiType information
-======================
+================
+Type information
+================
 
-This section contains information about how to configure and use QiTypes. To use Qi,
-you define QiTypes to describe the kinds of data you want to store, 
-then you create QiStreams that are associated with your QiTypes.
+This section contains information about how to configure and use Types. To use the Sequential Data Store (Sds),
+you define Types that describe the kinds of data you want to store, 
+then you create Streams that are associated with your Types.
 
-A QiType consists of one or more QiTypeProperties that can be a simple atomic type (such as an integer) 
-or can be a complex type, represented as another QiType. You can create a nested type by adding a QiType 
-as a property of another QiType; in this case, note that it is not necessary to first post the 
-nested QiType to Qi. In other words, the nested QiType is not required to exist in Qi as a 
+A Type consists of one or more SdsTypeProperties that can be a simple atomic type (such as an integer) 
+or can be a complex type, represented as another SdsType. You can create a nested type by adding an SdsType 
+as a property of another SdsType; in this case, note that it is not necessary to first post the 
+nested SdsType to the Sequential Data Store. In other words, the nested SdsType is not required to exist 
+in the Sequential Data Store as a 
 standalone type before it is posted as part of a nested type.
 
-A type is always referenced with its Id property. Using a QiType as a property permits the construction 
-of complex, nested data types. A QiType must have one or more properties that constitute an ordered 
+A type is always referenced with its Id property. Using an SdsType as a property permits the construction 
+of complex, nested data types. An SdsType must have one or more properties that constitute an ordered 
 key to be used as an index. While a timestamp (DateTime) is a very common type of key, any ordered 
 value is permitted.
 
-When a QiType is created it cannot be changed and can only be deleted if
+When an SdsType is created it cannot be changed and can only be deleted if
 no streams are associated with it.
 
-QiType management via the Qi Client Libraries is performed through the ``IQiMetadataService`` interface, which may be accessed via the ``QiService.GetMetadataService( )`` helper.
+SdsType management via the Sds Client Libraries is performed through the ``ISdsMetadataService`` 
+interface, which may be accessed using the ``SdsService.GetMetadataService( )`` helper.
 
-The following table shows the required and optional QiType properties:
+The following table shows the required and optional SdsType properties:
 
 +---------------+-------------------------+----------------------------------------+
 | Property      | Type                    | Details                                |
@@ -33,9 +35,9 @@ The following table shows the required and optional QiType properties:
 +---------------+-------------------------+----------------------------------------+
 | Description   | String                  | Optional description text              |
 +---------------+-------------------------+----------------------------------------+
-| QiTypeCode    | QiTypeCode              | Defines the type                       |
+| SdsTypeCode   | SdsTypeCode             | Defines the type                       |
 +---------------+-------------------------+----------------------------------------+
-| Properties    | IList<QiTypeProperty>   | List of QiTypeProperty items           |
+| Properties    | IList<SdsTypeProperty>  | List of SdsTypeProperty items          |
 +---------------+-------------------------+----------------------------------------+
 
 **Rules for typeId**
@@ -53,19 +55,19 @@ The following table shows the required and optional QiType properties:
 Compound Indexes
 ----------------
 
-When defining a QiType, the index property you use to sequence the
+When defining an SdsType, the index property you use to sequence the
 data must be defined in the type definition. Often, a single
-index such as DateTime is used, but for more complex scenarios Qi
+index such as DateTime is used, but for more complex scenarios Sds
 allows multiple indexes to be defined in a type. Multiple indexes are
-concatenated to form a compound index. The Qi REST API methods
+concatenated to form a compound index. The Sds REST API methods
 that use tuples were created to assist you to use compound
 indexes.
 
-Supported QiTypes
+Supported SdsTypes
 ----------------
 
 The following types are supported when
-creating a QiType:
+creating an SdsType:
 
 ======================   =================   =======================
 Array                    Boolean             BooleanArray
